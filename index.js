@@ -38,7 +38,6 @@ function convertArrayOfObjectsToCSV(data) {
     elt[4] = convertMilliseconds(elt[4]);
     elt[8] = new Date(allData.creationTime).toDateString();
     elt[6] = getTimeOfDay(allData.creationTime);
-    elt[3] = elt[3] / 100;
     return elt;
   });
 
