@@ -14,8 +14,8 @@ const dataRow = [
   "date",
 ];
 
-function getTimeOfDay() {
-  const currentHour = new Date().getHours();
+function getTimeOfDay(date) {
+  const currentHour = new Date(date).getHours();
   if (currentHour < 12) {
     return "Morning";
   } else {
@@ -42,7 +42,7 @@ function convertArrayOfObjectsToCSV(data) {
   const trueData = csvRows.map((elt) => {
     elt[4] = convertMilliseconds(elt[4]);
     elt[8] = new Date(allData.creationTime).toDateString();
-    elt[6] = getTimeOfDay();
+    elt[6] = getTimeOfDay(allData.creationTime);
     elt[3] = elt[3] / 100;
     return elt;
   });
