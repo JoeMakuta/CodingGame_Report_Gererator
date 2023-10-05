@@ -53,9 +53,9 @@ function downloadCSV(data1) {
   const link = document.createElement("a");
   link.href = encodeURI(csvContent);
   link.target = "_blank";
-  link.download = `Clash Report - ${new Date(
+  link.download = `Clash Report : ${getTimeOfDay(
     allData.creationTime
-  ).toDateString()}.csv`;
+  )} - ${new Date(allData.creationTime).toDateString()}.csv`;
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
