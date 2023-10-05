@@ -32,13 +32,8 @@ function convertMilliseconds(milliseconds) {
 }
 
 function convertArrayOfObjectsToCSV(data) {
-  // const csvHeaders = [];
-  // for (elt in data[0]) {
-  //   if (dataRow.includes(elt)) csvHeaders.push(elt);
-  // }
-  // console.log("Header " + csvHeaders);
-
   const csvRows = data.map((obj) => dataRow.map((elt) => obj[elt]));
+
   const trueData = csvRows.map((elt) => {
     elt[4] = convertMilliseconds(elt[4]);
     elt[8] = new Date(allData.creationTime).toDateString();
@@ -46,9 +41,6 @@ function convertArrayOfObjectsToCSV(data) {
     elt[3] = elt[3] / 100;
     return elt;
   });
-
-  // trueData.unshift(csvHeaders);
-  // console.log(trueData);
 
   const finalData = trueData.map((elt) => elt.join(",")).join("\n");
 
@@ -70,9 +62,9 @@ function downloadCSV(data1) {
 }
 
 // Download the CSV file
+
 function getTheInput() {
   const value = document.getElementById("data_input").value;
   allData = JSON.parse(value);
-  console.log(allData);
   downloadCSV(allData.players);
 }
