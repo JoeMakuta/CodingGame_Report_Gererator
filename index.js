@@ -15,7 +15,7 @@ const dataRow = [
 ];
 
 function getTimeOfDay(date) {
-  const currentHour = new Date(date).getHours();
+  const currentHour = new Date(date).getHours() + 2;
   if (currentHour < 12) {
     return "Morning";
   } else {
