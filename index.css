@@ -1,0 +1,38 @@
+body {
+  display: flex;
+  padding: 2vw;
+  background: linear-gradient(
+    to bottom,
+    rgb(218, 207, 207),
+    rgb(201, 201, 212)
+  );
+}
+textarea {
+  width: 90%;
+  height: 87vh;
+  padding: 10px;
+  outline: none;
+  font-family: "Courier New", Courier, monospace;
+  border: none;
+  border-radius: 5px;
+}
+button {
+  margin-left: 2vh;
+  cursor: pointer;
+  background-color: rgb(224, 124, 2);
+  border-radius: 5px;
+  height: 5vh;
+  width: 10%;
+  color: white;
+  outline: none;
+  border: none;
+  transition: all 0.5s;
+  min-width: 100px;
+}
+
+button:active {
+  background: #000;
+}
+button:hover {
+  background-color: rgb(216, 155, 79);
+}
