@@ -1,4 +1,9 @@
-// Sample array of objects
+// Declare variables
+
+const errorPara = document.getElementById("error");
+const downloadButton = document.getElementById("downloadButton");
+const data_input = document.getElementById("data_input");
+const container = document.querySelector(".container");
 
 let allData;
 
@@ -47,24 +52,38 @@ function convertArrayOfObjectsToCSV(data) {
   return finalData;
 }
 
+// Download the CSV file
+
 function downloadCSV(data1) {
   const csvContent =
     "data:text/csv;charset=utf-8," + convertArrayOfObjectsToCSV(data1);
-  const link = document.createElement("a");
-  link.href = encodeURI(csvContent);
-  link.target = "_blank";
-  link.download = `Clash Report : ${getTimeOfDay(
+
+  downloadButton.href = encodeURI(csvContent);
+
+  downloadButton.target = "_blank";
+
+  downloadButton.download = `Clash Report : ${getTimeOfDay(
     allData.creationTime
   )} - ${new Date(allData.creationTime).toDateString()}.csv`;
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
 }
 
-// Download the CSV file
+function getTheInput(jsonData) {
+  try {
+    downloadButton.removeAttribute("href");
 
-function getTheInput() {
-  const value = document.getElementById("data_input").value;
-  allData = JSON.parse(value);
-  downloadCSV(allData.players);
+    allData = JSON.parse(jsonData);
+
+    if (allData.players !== "undefined") downloadCSV(allData.players);
+    else throw new Error("Not a valid json");
+
+    data_input.style.border = "0px solid black";
+    errorPara.textContent = "";
+  } catch (error) {
+    errorPara.textContent = error?.message.split(",")[1];
+    data_input.style.border = "1px solid red";
+  }
 }
+
+data_input.addEventListener("input", (e) => {
+  getTheInput(e.target.value);
+});

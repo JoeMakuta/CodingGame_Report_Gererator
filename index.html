@@ -4,11 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="index.css" />
-    <title>Document</title>
+    <title>Codingame - Repport Generator</title>
   </head>
   <body>
-    <textarea type="text" name="data" id="data_input" markdown></textarea>
-    <button onclick="getTheInput()">Download</button>
+    <!-- <h1>Codingame - Clash Repport Generator</h1> -->
+    <div class="container">
+      <div>
+        <textarea
+          type="text"
+          placeholder="Paste your json here ..."
+          name="data"
+          id="data_input"
+          required
+        ></textarea>
+        <p id="error"></p>
+      </div>
+      <a id="downloadButton">Download</a>
+    </div>
+
     <script src="index.js"></script>
   </body>
 </html>
